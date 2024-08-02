@@ -34,4 +34,5 @@ jobs:
               direction: 'desc'
             });
             const prNumber = result.data.find(pr => pr.merge_commit_sha == context.sha);
-            console.log(prNumber)
+            console.log("hello...")
+            console.log(prNumber.number)
