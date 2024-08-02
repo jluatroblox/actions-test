@@ -25,7 +25,6 @@ jobs:
           COMMENT_BODY: ${{ inputs.comment-body }}
         with:
           script: |
-            console.log(context)
             // Get the list of closed PRs targeting the base branch
             const result = await github.rest.pulls.list({
               owner: context.repo.owner,
@@ -34,4 +33,5 @@ jobs:
               state: 'closed',
               direction: 'desc'
             });
-            console.log(result)
+            const prNumber = result.data.find(pr => pr.merge_commit_sha == context.sha);
+            console.log(prNumber)
