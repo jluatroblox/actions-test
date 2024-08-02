@@ -29,3 +29,11 @@ jobs:
         with:
           script: |
             console.log(context)
+            // Get the list of closed PRs targeting the base branch
+            const result = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sort: 'updated',
+              direction: 'desc'
+            });
+            console.log(result)
