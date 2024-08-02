@@ -4,9 +4,6 @@ name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  pull_request:
-    branches: [ "main" ]
   push:
     branches: [ "main" ]
 
@@ -34,6 +31,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               sort: 'updated',
+              state: 'closed',
               direction: 'desc'
             });
             console.log(result)
