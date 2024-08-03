@@ -25,6 +25,9 @@ jobs:
           COMMENT_BODY: ${{ inputs.comment-body }}
         with:
           script: |
+            console.log(context)
+            console.log(context.repo)
+            console.log(github.context)
             // Get the list of closed PRs targeting the base branch
             const result = await github.rest.pulls.list({
               owner: context.repo.owner,
