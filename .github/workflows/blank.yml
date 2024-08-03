@@ -36,3 +36,9 @@ jobs:
             const prNumber = result.data.find(pr => pr.merge_commit_sha == context.sha);
             console.log("hello...")
             console.log(prNumber.number)
+            await github.rest.issues.createComment({
+              issue_number: prNumber.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "BINGO!!!",
+            })
